@@ -8,6 +8,7 @@ using System.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
 using Bdd.Project.Test.Utilities;
+using OpenQA.Selenium.Chrome;
 
 namespace Bdd.Porject.Test.Steps
 {
@@ -22,12 +23,7 @@ namespace Bdd.Porject.Test.Steps
         private IWebElement searchBox { get; set; }
         private IWebElement searchButton { get; set; }
         private ClientInterface client{ get;set;}
-        //private ExtentReportsHelper ReportsHelper { get; set; }
 
-        //public WeatherSteps(ExtentReportsHelper reportsHelper)
-        //{
-        //    ReportsHelper = reportsHelper;
-        //}
 
         [BeforeFeature]
         public static void Setup()
@@ -36,16 +32,21 @@ namespace Bdd.Porject.Test.Steps
             //SearchString = ConfigurationManager.AppSettings["SearchValue"];
         }
 
-        [Given(@"Call Google home URL")]
-        public void GivenCallGoogleHomeURL()
+        [Given(@"Call Google home URL from ""(.*)""")]
+        public void GivenCallGoogleHomeURLFrom(string browser)
         {
-            // Starting the Firefox driver
-            webDriver = new FirefoxDriver();
-            //ReportsHelper.SetStepStatusPass("Openned Firefox");
+            if (browser.ToLower() == "chrome")
+            {
+                ChromeOptions options = new ChromeOptions() { AcceptInsecureCertificates = true };
+                webDriver = new ChromeDriver(options);
+            }
+            else if (browser.ToLower() == "firefox")
+            {
+                FirefoxOptions options = new FirefoxOptions() { AcceptInsecureCertificates = true };
+                webDriver = new FirefoxDriver(options);
+            }
             webDriver.Navigate().GoToUrl(HomeUrl);
-            //ReportsHelper.SetStepStatusPass("Directed to Home Url");
             webDriver.Manage().Window.Maximize();
-            //ReportsHelper.SetStepStatusPass("Maximised the Window");
         }
 
         [Then(@"Find the search box")]

@@ -7,7 +7,6 @@ using TechTalk.SpecFlow;
 
 namespace Bdd.Project.Test.Utilities
 {
-    [Binding]
     public class ExtentReportsHelper
     {
         public ExtentReports extent { get; set; }
