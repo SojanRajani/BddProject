@@ -92,7 +92,7 @@ namespace Bdd.Project.Test.Features
             testRunner.CollectScenarioErrors();
         }
         
-        public virtual void CompareTheTwoWeatherApiOuputs(string searchText, string lattitude, string longitude, string[] exampleTags)
+        public virtual void CompareTheTwoWeatherApiOuputs(string browser, string searchText, string lattitude, string longitude, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "AssertingTemperatures"};
@@ -102,6 +102,7 @@ namespace Bdd.Project.Test.Features
             }
             string[] tagsOfScenario = @__tags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("Browser", browser);
             argumentsOfScenario.Add("SearchText", searchText);
             argumentsOfScenario.Add("Lattitude", lattitude);
             argumentsOfScenario.Add("Longitude", longitude);
@@ -127,7 +128,7 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 8
- testRunner.Given("Call Google home URL", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given(string.Format("Call Google home URL from \"{0}\"", browser), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 9
  testRunner.Then("Find the search box", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
@@ -152,17 +153,34 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Compare the two weather api ouputs: temperature in trivandrum")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Compare the two weather api ouputs: Chrome")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Weather")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("AssertingTemperatures")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "temperature in trivandrum")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Chrome")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Browser", "Chrome")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:SearchText", "temperature in trivandrum")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Lattitude", "8.5241")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Longitude", "76.9366")]
-        public virtual void CompareTheTwoWeatherApiOuputs_TemperatureInTrivandrum()
+        public virtual void CompareTheTwoWeatherApiOuputs_Chrome()
         {
 #line 7
-this.CompareTheTwoWeatherApiOuputs("temperature in trivandrum", "8.5241", "76.9366", ((string[])(null)));
+this.CompareTheTwoWeatherApiOuputs("Chrome", "temperature in trivandrum", "8.5241", "76.9366", ((string[])(null)));
+#line hidden
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Compare the two weather api ouputs: FireFox")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Weather")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("AssertingTemperatures")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "FireFox")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Browser", "FireFox")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:SearchText", "temperature in trivandrum")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Lattitude", "8.5241")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Longitude", "76.9366")]
+        public virtual void CompareTheTwoWeatherApiOuputs_FireFox()
+        {
+#line 7
+this.CompareTheTwoWeatherApiOuputs("FireFox", "temperature in trivandrum", "8.5241", "76.9366", ((string[])(null)));
 #line hidden
         }
     }

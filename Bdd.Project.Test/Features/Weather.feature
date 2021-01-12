@@ -5,7 +5,7 @@
 
 @AssertingTemperatures
 Scenario Outline: Compare the two weather api ouputs
-	Given Call Google home URL
+	Given Call Google home URL from "<Browser>"
 	Then Find the search box
 	Then Enter search box text "<SearchText>"
 	Then Find and click the search button
@@ -13,5 +13,6 @@ Scenario Outline: Compare the two weather api ouputs
 	Then Call the Open weather Api with "<Lattitude>" and "<Longitude>"
 	And Compare the temperatures
 		Examples: 
-		| SearchText				| Lattitude | Longitude |
-		| temperature in trivandrum | 8.5241    | 76.9366   |
+		| Browser  | SearchText				   | Lattitude | Longitude |
+		| Chrome   | temperature in trivandrum | 8.5241    | 76.9366   |
+		| FireFox  | temperature in trivandrum | 8.5241    | 76.9366   |
